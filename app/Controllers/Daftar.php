@@ -127,14 +127,7 @@ class Daftar extends BaseController
             // Standard exceptions
             log_message('error', $e->getMessage());
         
-        } catch (\Throwable $t) {
-
-            // Critical system errors
-            // echo $t->getMessage();
-            return view('errors/html/error_exception', ['message' => $t->getMessage()]);
-    
-        }        
-
+        }
     }
 
     public function terima_kasih() 
@@ -144,18 +137,16 @@ class Daftar extends BaseController
 
     }
 
-    public function kirim_email($penerima, $pwd)
+    public function kirim_email($email_resort, $pwd)
     {
 
         $email = \Config\Services::email();
 
-        $email_pengirim = getenv("email.SMTPUser");
-        $pihak_pengirim = getenv('email.SMTPFrom');
-        $email->setFrom($email_pengirim, $pihak_pengirim);
-        $email->setTo($penerima);
+        $pengirim = getenv('email.SMTPUser');
+
+        $email->setFrom($pengirim, "Riset & Pengembangan | GMI Wil-I");
+        $email->setTo($email_resort);
         $email->setSubject('Status Pendaftaran Resort GMI Wil-I');
-        // // $email->setCC('another@another-example.com');
-        // // $email->setBCC('them@their-example.com');
 
         $message = '<!DOCTYPE html>';
         $message = $message . '<html lang="en">';
@@ -177,7 +168,7 @@ class Daftar extends BaseController
         $message = $message . '             <p>Anda dapat melakukan login ke aplikasi dengan menggunakan keterangan di bawah ini:</p>';
         $message = $message . '             <hr>';
         $message = $message . '             <p>Link: https://app.gmiwilayah1.org</p>';
-        $message = $message . '             <p>Login: ' .$penerima. '</p>';
+        $message = $message . '             <p>Login: ' .$email_resort. '</p>';
         $message = $message . '             <p>Password: ' .$pwd. '</p>';
         $message = $message . '             <hr>';
         $message = $message . '             <p>Catatan: password dapat di ubah di dalam aplikasi melalui menu Seting > Password</p>';
@@ -200,7 +191,7 @@ class Daftar extends BaseController
         } else {
 
             error_log($this->email->print_debugger());
-            echo $email->printDebugger(['headers', 'subject', 'body']);
+            echo($email->printDebugger(['headers', 'subject', 'body']));
     
         }
 

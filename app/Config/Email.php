@@ -123,4 +123,20 @@ class Email extends BaseConfig
      * Enable notify message from server
      */
     public bool $DSN = false;
+
+    public function __construct()
+    {
+        parent::__construct();
+        
+        // Fallback for earlier CI4 versions that do not auto-map
+        $this->protocol     = getenv('email.protocol');
+        $this->SMTPHost     = getenv('email.SMTPHost');
+        $this->SMTPPort     = getenv('email.SMTPPort');
+        $this->SMTPUser     = getenv('email.SMTPUser');
+        $this->SMTPPass     = getenv('email.SMTPPass');
+        $this->SMTPCrypto   = getenv('email.SMTPCrypto');
+        $this->mailType     = getenv('email.mailType');
+    
+    }    
+
 }

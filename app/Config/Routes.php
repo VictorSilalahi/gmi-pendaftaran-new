@@ -9,3 +9,4 @@ $routes->get('/', 'Daftar::index');
 $routes->post('/cek_email', 'Daftar::cek_email');
 $routes->post('/cek_resort', 'Daftar::cek_resort');
 $routes->post('/tambah_resort', 'Daftar::tambah_resort');
+$routes->get('/terima_kasih', 'Daftar::terima_kasih');
