@@ -34,7 +34,7 @@
                 <div class="col-2"></div>
 
                 <div class="col-8" id="div_form">
-                    <form id="formDaftar" action="tambah_resort" method="post" enctype="multipart/form-data">
+                    <form id="formDaftar" action="<?php echo(base_url()); ?>tambah_resort" method="post" enctype="multipart/form-data">
                         <div class="row mb-3">
                             <label for="txtNamaResort" class="col-sm-8 col-form-label">Nama Resort</label>
                             <div class="col-sm-10">
