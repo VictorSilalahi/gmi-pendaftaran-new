@@ -23,7 +23,7 @@
                     <div class="container">
                         <a class="navbar-brand" href="#">
                             <img src="assets/images/logo-gmi.png" alt="Bootstrap" width="40" height="54"  class="d-inline-block align-text-top">
-                                <h4>Pendaftaran Resort GMI Wil-I</h4>
+                                <h4>Pendaftaran Resort GMI Wil-I | SIGMI</h4>
                         </a>
                     </div>
                 </nav>
